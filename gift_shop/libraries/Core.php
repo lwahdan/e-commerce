@@ -53,6 +53,12 @@ class Core {
         'customers/privacy-policy' => 'CustomerController@privacy',
         'customers/product-details-default' => 'CustomerController@product',
         'customers/wishlist' => 'CustomerController@wishlist',
+
+        //Product controllers
+        'search' => 'SearchController@search',
+        'products' =>'SearchController@viewProducts'
+        // 'products' => 'ProductController@index',
+        // 'product/view' => 'ProductController@view',
     ];
 
     public function __construct() {

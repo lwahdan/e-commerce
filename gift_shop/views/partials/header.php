@@ -445,10 +445,13 @@
 <!-- Start Offcanvas Search Bar Section -->
 <div id="search" class="search-modal">
     <button type="button" class="close">×</button>
-    <form>
-        <input type="search" placeholder="type keyword(s) here" />
-        <button type="submit" class="btn btn-lg btn-golden">Search</button>
-    </form>
+    <!-- Views/searchResults.php -->
+
+<form method="GET" action="search">
+    <input type="search" placeholder="Type keyword(s) here" name="search" />
+    <button type="submit" class="btn btn-lg btn-golden" name="btn-search">Search</button>
+</form>
+
 </div>
 <!-- End Offcanvas Search Bar Section -->
 
