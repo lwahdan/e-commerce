@@ -2,16 +2,16 @@
 <?php
 require_once 'BaseController.php';
 
-class UserController extends Controller {
+class SuperUserController extends Controller {
     private $userModel;
 
     public function __construct() {
-        $this->userModel = $this->model('UserModel');
+        $this->userModel = $this->model('SuperUserModel');
     }
 
     public function index() {
         $users = $this->userModel->all();
-        $this->view('admin/users/index', ['users' => $users]);
+        $this->view('SuperAdmin/users/index', ['users' => $users]);
     }
 
 
@@ -19,7 +19,7 @@ class UserController extends Controller {
     public function create() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->userModel->create($_POST);
-            header('Location: /admin/users');
+            header('Location: /SuperAdmin/users');
         }
     }
 
@@ -63,7 +63,7 @@ class UserController extends Controller {
                 try {
                     $this->userModel->create($userData);
                     $_SESSION['success'] = 'User added successfully';
-                    header('Location: /admin/users');
+                    header('Location: /SuperAdmin/users');
                     exit();
                 } catch (Exception $e) {
                     $errors['general'] = 'Error adding user: ' . $e->getMessage();
@@ -73,10 +73,10 @@ class UserController extends Controller {
             // If there are errors, pass them to the view
             $data['errors'] = $errors;
             $data['old'] = $_POST; // Preserve old input
-            $this->view('admin/users/add', $data);
+            $this->view('SuperAdmin/users/add', $data);
         } else {
             // Display the add user form
-            $this->view('admin/users/add');
+            $this->view('SuperAdmin/users/add');
         }
     }
 
@@ -89,7 +89,7 @@ class UserController extends Controller {
             $_SESSION['error'] = 'Error updating user status: ' . $e->getMessage();
         }
 
-        header('Location: /admin/users');
+        header('Location: /SuperAdmin/users');
         exit();
     }
 

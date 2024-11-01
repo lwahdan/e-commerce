@@ -1,10 +1,10 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/views/SuperAdmin/partials/header.php";
 ?>
 <div id="addForm" style="display: none;">
     <div id="addUserForm" >
         <h1>Add User</h1>
-        <form method="POST" action="/admin/users/create">
+        <form method="POST" action="/SuperAdmin/users/create">
             <div class="input-group">
                 <input type="text" name="username" placeholder="Username" required>
                 <input type="email" name="email" placeholder="Email" required>
@@ -66,7 +66,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
                     <td><?php echo htmlspecialchars($user['last_name']); ?></td>
                     <td><?php echo htmlspecialchars($user['phone_number']); ?></td>
                     <td>
-                        <a href="/admin/users/toggleStatus/<?php echo $user['id']; ?>/<?php echo ($user['status'] == 1 ? '0' : '1'); ?>"
+                        <a href="/SuperAdmin/users/toggleStatus/<?php echo $user['id']; ?>/<?php echo ($user['status'] == 1 ? '0' : '1'); ?>"
                            class="<?php echo ($user['status'] == 1 ? 'btn-danger' : 'btn-Green'); ?>">
                             <?php echo ($user['status'] == 1 ? 'Disable' : 'Enable'); ?>
                         </a>
@@ -86,5 +86,5 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
 </div>
 
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/footer.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/views/SuperAdmin/partials/footer.php";
 ?>

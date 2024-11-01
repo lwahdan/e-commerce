@@ -7,6 +7,7 @@ class UserModel extends BaseModel {
         parent::__construct('users');
     }
 
+
     public function getTotalUsers() {
         $stmt = $this->pdo->prepare("SELECT COUNT(*) AS total FROM users");
         $stmt->execute();
@@ -18,4 +19,5 @@ class UserModel extends BaseModel {
         $stmt = $this->pdo->prepare("UPDATE users SET status = :status WHERE id = :id");
         return $stmt->execute(['status' => $status, 'id' => $id]);
     }
+
 }

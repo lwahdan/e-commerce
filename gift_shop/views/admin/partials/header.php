@@ -14,12 +14,14 @@
     <div class="navigation">
         <ul>
 
-            <li><a href="#"><span class="icon"><ion-icon name="gift-outline"></ion-icon></span><span class="title">Gift</span></a></li>
+            <li><a href="#"><span class="icon"><ion-icon name="gift-outline"></ion-icon></span><span class="title">Admin</span></a></li>
             <li><a href="/admin/dashboard"><span class="icon"><ion-icon name="clipboard-outline"></ion-icon></span><span class="title">Dashboard</span></a></li>
             <li><a href="/admin/users"><span class="icon"><ion-icon name="people-outline"></ion-icon></span><span class="title">Users</span></a></li>
-            <li><a href="/admin/category"><span class="icon"><ion-icon name="cube-outline"></ion-icon></span><span class="title">Category</span></a></li>
-            <li><a href="/admin/comments"><span class="icon"><ion-icon name="chatbubble-outline"></ion-icon></span><span class="title">Comments</span></a></li>
+            <li><a href="/admin/category"><span class="icon"><ion-icon name="cube-outline"></ion-icon></span><span class="title">Categories</span></a></li>
+            <li><a href="/admin/comments"><span class="icon"><ion-icon name="chatbubble-outline"></ion-icon></span><span class="title">Reviews</span></a></li>
             <li><a href="/admin/coupons"><span class="icon"><ion-icon name="pricetags-outline"></ion-icon></span><span class="title">Coupons</span></a></li>
+            <li><a href="/admin/orders"><span class="icon"><ion-icon name="cart-outline"></ion-icon></span><span class="title">Order</span></a></li>
+            <li><a href="/admin/wishlist"><span class="icon"><ion-icon name="heart-outline"></ion-icon></span><span class="title">Wishlist</span></a></li>
             <li><a href="/admin/Password"><span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span><span class="title">Password</span></a></li>
             <li><a href="/admin/Signout"><span class="icon"><ion-icon name="log-out-outline"></ion-icon></span><span class="title">Sign Out</span></a></li>
         </ul>

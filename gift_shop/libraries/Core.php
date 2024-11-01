@@ -5,65 +5,97 @@ class Core {
         // Default route to customer index
         '' => 'CustomerController@index',  // This handles the root URL
 
-        // Admin Routes
 
+
+
+        // Admin Routes
         'admin/dashboard' => 'DashboardController@index',
         'admin/users' => 'UserController@index',
+        'admin/comments' => 'ReviewController@index',
         'admin/users/create' => 'UserController@create',
         'admin/users/status' => 'UserController@toggleStatus',
-
-        'admin/users/toggleStatus/{id}/{status}' => 'UserController@toggleStatus',
         'admin/coupons' => 'CouponController@index',
+        'admin/coupons/create' => 'CouponController@create',
+        'admin/coupons/edit/{id}' => 'CouponController@edit',
+        'admin/coupons/delete/{id}' => 'CouponController@delete',
+        'admin/users/toggleStatus/{id}/{status}' => 'UserController@toggleStatus',
+        'admin/reviews/toggleStatus/{id}/{status}' => 'ReviewController@toggleStatus',
         'admin/coupons/toggleStatus/{id}/{status}' => 'CouponController@toggleStatus',
         'admin/login' => 'AdminController@login',
 
-        'admin/manage_category' => 'AdminController@manageCategory',
-        'admin/manage_products' => 'AdminController@manageProducts',
-        'admin/manage_orders' => 'AdminController@manageOrders',
-        'admin/manage_customers' => 'AdminController@manageCustomers',
-        'admin/manage_coupon' => 'AdminController@manageCoupon',
-        'admin/messages' => 'AdminController@messages',
-        'admin/account_settings' => 'AdminController@accountSettings',
-        'admin/logout' => 'AdminController@logout',
+        'admin/category' => 'CategoryController@index',                 // List categories
+        'admin/category/create' => 'CategoryController@create',           // Create category form
+        'admin/category/store' => 'CategoryController@store',             // Store new category
+        'admin/category/edit/{id}' => 'CategoryController@edit',
+        'admin/categories/show/{id}' => 'CategoryController@show',
+        'admin/categories/addSubcategory/{id}' => 'CategoryController@addSubcategory',
+        // Edit category form
+        'admin/category/update/{id}' => 'CategoryController@update',      // Update category
+        'admin/category/delete/{id}' => 'CategoryController@delete',      // Delete category
 
+        // New Product Routes
+        'admin/products' => 'ProductController@index',                    // List products
+        'admin/product/create' => 'ProductController@create',             // Create product form
+        'admin/product/store' => 'ProductController@store',               // Store new product
+        'admin/product/edit/{id}' => 'ProductController@edit',            // Edit product form
+        'admin/product/update/{id}' => 'ProductController@update',        // Update product
+        'admin/product/delete/{id}' => 'ProductController@delete',        // Delete product
 
         // Order Management Route
-        'admin/manage_orders/{user_id}' => 'OrderController@manageOrders',
-
-        // Cart Routes
-        'cart/show' => 'CartController@show',
-        'cart/add' => 'CartController@add',
-        'cart/remove' => 'CartController@remove',
-        'cart/update' => 'CartController@update',
-        'cart/clear' => 'CartController@clear',
+        'admin/orders' => 'OrderController@index',              // List all orders
+        'admin/orders/show/{id}' => 'OrderController@show',     // Show a specific order
+        'admin/orders/create' => 'OrderController@create',      // Create a new order
+        'admin/orders/store' => 'OrderController@store',        // Store new order data
+        'admin/orders/edit/{id}' => 'OrderController@edit',     // Edit a specific order
+        'admin/orders/update/{id}' => 'OrderController@update', // Update a specific order
+        'admin/orders/delete/{id}' => 'OrderController@delete',
 
         // Super Admin Routes
-        'super-admin/login' => 'SuperAdminController@login',
-        'super-admin/dashboard' => 'SuperAdminController@dashboard',
-        'super-admin/manage_category' => 'SuperAdminController@manageCategory',
-        'super-admin/manage_products' => 'SuperAdminController@manageProducts',
-        'super-admin/manage_orders' => 'SuperAdminController@manageOrders',
-        'super-admin/manage_customers' => 'SuperAdminController@manageCustomers',
-        'super-admin/manage_coupon' => 'SuperAdminController@manageCoupon',
-        'super-admin/messages' => 'SuperAdminController@messages',
-        'super-admin/account_settings' => 'SuperAdminController@accountSettings',
-        'super-admin/logout' => 'SuperAdminController@logout',
-        'super-admin/manage_admin' => 'SuperAdminController@manageAdmin',
 
-        // customers Routes
-        'customers/_404' => 'CustomerController@_404',
-        'customers/about-us' => 'CustomerController@about',
-        'customers/cart' => 'CustomerController@cart',
-        'customers/contact-us' => 'CustomerController@contact',
-        'customers/checkout' => 'CustomerController@checkout',
-        'customers/faq' => 'CustomerController@faq',
-        'customers/index' => 'CustomerController@index',
-        'customers/login' => 'CustomerController@login',
-        'customers/my-account' => 'CustomerController@account',
-        'customers/privacy-policy' => 'CustomerController@privacy',
-        'customers/product-details-default' => 'CustomerController@product',
-        'customers/wishlist' => 'CustomerController@wishlist',
-        'admin/product/create' => 'ProductController@create',
+        'SuperAdmin/dashboard' => 'SuperDashboardController@index',
+        'SuperAdmin/users' => 'SuperUserController@index',
+        'SuperAdmin/comments' => 'SuperReviewController@index',
+        'SuperAdmin/users/create' => 'SuperUserController@create',
+        'SuperAdmin/users/status' => 'SuperUserController@toggleStatus',
+        'SuperAdmin/coupons' => 'SuperCouponController@index',
+        'SuperAdmin/coupons/create' => 'SuperCouponController@create',
+        'SuperAdmin/coupons/edit/{id}' => 'SuperCouponController@edit',
+        'SuperAdmin/coupons/delete/{id}' => 'SuperCouponController@delete',
+        'SuperAdmin/users/toggleStatus/{id}/{status}' => 'SuperUserController@toggleStatus',
+        'SuperAdmin/reviews/toggleStatus/{id}/{status}' => 'SuperReviewController@toggleStatus',
+        'SuperAdmin/coupons/toggleStatus/{id}/{status}' => 'SuperCouponController@toggleStatus',
+
+
+        'SuperAdmin/category' => 'SuperCategoryController@index',                 // List categories
+        'SuperAdmin/category/create' => 'SuperCategoryController@create',           // Create category form
+        'SuperAdmin/category/store' => 'SuperCategoryController@store',             // Store new category
+        'SuperAdmin/category/edit/{id}' => 'SuperCategoryController@edit',
+        'SuperAdmin/categories/show/{id}' => 'SuperCategoryController@show',
+        'SuperAdmin/categories/addSubcategory/{id}' => 'SuperCategoryController@addSubcategory',
+        // Edit category form
+        'SuperAdmin/category/update/{id}' => 'SuperCategoryController@update',      // Update category
+        'SuperAdmin/category/delete/{id}' => 'SuperCategoryController@delete',      // Delete category
+
+        // New Product Routes
+        'SuperAdmin/products' => 'SuperProductController@index',                    // List products
+        'SuperAdmin/product/create' => 'SuperProductController@create',             // Create product form
+        'SuperAdmin/product/store' => 'SuperProductController@store',               // Store new product
+        'SuperAdmin/product/edit/{id}' => 'SuperProductController@edit',            // Edit product form
+        'SuperAdmin/product/update/{id}' => 'SuperProductController@update',        // Update product
+        'SuperAdmin/product/delete/{id}' => 'SuperProductController@delete',        // Delete product
+
+        // Order Management Route
+        'SuperAdmin/orders' => 'SuperOrderController@index',              // List all orders
+        'SuperAdmin/orders/show/{id}' => 'SuperOrderController@show',     // Show a specific order
+        'SuperAdmin/orders/create' => 'SuperOrderController@create',      // Create a new order
+        'SuperAdmin/orders/store' => 'SuperOrderController@store',        // Store new order data
+        'SuperAdmin/orders/edit/{id}' => 'SuperOrderController@edit',     // Edit a specific order
+        'SuperAdmin/orders/update/{id}' => 'SuperOrderController@update', // Update a specific order
+        'SuperAdmin/orders/delete/{id}' => 'SuperOrderController@delete', // Delete a specific order
+
+
+
+
     ];
 
     public function __construct() {

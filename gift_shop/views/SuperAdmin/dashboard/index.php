@@ -2,7 +2,7 @@
 <!--// views/admin/dashboard/index.php-->
 <?php
 $dashboardActivation="Active";
-require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/views/SuperAdmin/partials/header.php";
 
 ?>
 <div class="cardBox">
@@ -48,5 +48,5 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
 </div>
 
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/footer.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/views/SuperAdmin/partials/footer.php";
 ?>

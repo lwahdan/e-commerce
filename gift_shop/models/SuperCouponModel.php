@@ -1,7 +1,7 @@
 <?php
 require_once 'BaseModel.php';
 
-class CouponModel extends BaseModel
+class SuperCouponModel extends BaseModel
 {
     public function __construct()
     {

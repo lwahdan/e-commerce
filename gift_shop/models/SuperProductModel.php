@@ -2,7 +2,7 @@
 
 require_once 'BaseModel.php';
 
-class ProductModel extends BaseModel
+class SuperProductModel extends BaseModel
 {
     public function __construct()
     {

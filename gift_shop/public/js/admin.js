@@ -20,11 +20,11 @@ toggle.onclick = function () {
 
 // Show/Hide Add User Form
 document.getElementById("addUserBtn").onclick = function () {
-    document.getElementById("addUserForm").style.display = "block";
+    document.getElementById("addForm").style.display = "block";
 };
 
 function toggleAddUserForm() {
-    document.getElementById("addUserForm").style.display = "none";
+    document.getElementById("addForm").style.display = "none";
 }
 
 function toggleForm(formId) {

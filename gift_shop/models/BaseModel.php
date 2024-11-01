@@ -58,15 +58,17 @@ class BaseModel
         }
 
         $fields = rtrim($fields, ',');
-        $sql = "UPDATE $this->table SET $fields WHERE id = :id";
+        $sql = "UPDATE $this->table SET $fields WHERE id = $id";
+
         $statement = $this->pdo->prepare($sql);
+
         $statement->execute($data);
     }
 
     public function delete($id)
     {
-        $statement = $this->pdo->prepare( "DELETE FROM $this->table WHERE id = :id");
-        $statement -> bindValue(':id', $id);
+        $statement = $this->pdo->prepare( "DELETE FROM $this->table WHERE id = $id");
+
         $statement->execute();
 
     }
