@@ -1,7 +1,6 @@
-
-<!--// views/admin/dashboard/index.php-->
 <?php
 $dashboardActivation="Active";
+$totalProducts = count($data['totalProducts']);
 require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
 
 ?>

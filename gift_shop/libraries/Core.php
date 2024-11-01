@@ -4,11 +4,7 @@ class Core
 {
     protected $routes = [
         // Default route to customer index
-        '' => 'CustomerController@index',  // This handles the root URL
-
-
-        // Admin Routes
-
+        '' => 'ProductController@home',  // This handles the root URL
 
         // Admin Routes
         'admin/dashboard' => 'DashboardController@index',
@@ -35,23 +31,15 @@ class Core
         'admin/category/update/{id}' => 'CategoryController@update',      // Update category
         'admin/category/delete/{id}' => 'CategoryController@delete',      // Delete category
 
-        'admin/manage_category' => 'AdminController@manageCategory',
-        'admin/manage_products' => 'AdminController@manageProducts',
-        'admin/manage_orders' => 'AdminController@manageOrders',
-        'admin/manage_customers' => 'AdminController@manageCustomers',
-        'admin/manage_coupon' => 'AdminController@manageCoupon',
-        'admin/messages' => 'AdminController@messages',
-        'admin/account_settings' => 'AdminController@accountSettings',
-        'admin/logout' => 'AdminController@logout',
-
-        // New Product Routes
-        'admin/products' => 'ProductController@index',                    // List products
-        'admin/product/create' => 'ProductController@create',             // Create product form
-        'admin/product/store' => 'ProductController@store',               // Store new product
-        'admin/product/edit/{id}' => 'ProductController@edit',            // Edit product form
-        'admin/product/update/{id}' => 'ProductController@update',        // Update product
-        'admin/product/delete/{id}' => 'ProductController@delete',        // Delete product
-
+       
+        'admin/manage_category' => 'DashboardController@manageCategory',
+        'admin/products' => 'DashboardController@manageProducts',
+        'admin/manage_orders' => 'DashboardController@manageOrders',
+        'admin/manage_customers' => 'DashboardController@manageCustomers',
+        'admin/manage_coupon' => 'DashboardController@manageCoupon',
+        'admin/messages' => 'DashboardController@messages',
+        'admin/account_settings' => 'DashboardController@accountSettings',
+        'admin/logout' => 'DashboardController@logout',
 
         // Order Management Route
 
@@ -63,49 +51,21 @@ class Core
         'admin/orders/update/{id}' => 'OrderController@update', // Update a specific order
         'admin/orders/delete/{id}' => 'OrderController@delete',
 
-        // Super Admin Routes
+            // Super Admin Routes
 
-        'SuperAdmin/dashboard' => 'SuperDashboardController@index',
-        'SuperAdmin/users' => 'SuperUserController@index',
-        'SuperAdmin/comments' => 'SuperReviewController@index',
-        'SuperAdmin/users/create' => 'SuperUserController@create',
-        'SuperAdmin/users/status' => 'SuperUserController@toggleStatus',
-        'SuperAdmin/coupons' => 'SuperCouponController@index',
-        'SuperAdmin/coupons/create' => 'SuperCouponController@create',
-        'SuperAdmin/coupons/edit/{id}' => 'SuperCouponController@edit',
-        'SuperAdmin/coupons/delete/{id}' => 'SuperCouponController@delete',
-        'SuperAdmin/users/toggleStatus/{id}/{status}' => 'SuperUserController@toggleStatus',
-        'SuperAdmin/reviews/toggleStatus/{id}/{status}' => 'SuperReviewController@toggleStatus',
-        'SuperAdmin/coupons/toggleStatus/{id}/{status}' => 'SuperCouponController@toggleStatus',
-
-
-        'SuperAdmin/category' => 'SuperCategoryController@index',                 // List categories
-        'SuperAdmin/category/create' => 'SuperCategoryController@create',           // Create category form
-        'SuperAdmin/category/store' => 'SuperCategoryController@store',             // Store new category
-        'SuperAdmin/category/edit/{id}' => 'SuperCategoryController@edit',
-        'SuperAdmin/categories/show/{id}' => 'SuperCategoryController@show',
-        'SuperAdmin/categories/addSubcategory/{id}' => 'SuperCategoryController@addSubcategory',
-        // Edit category form
-        'SuperAdmin/category/update/{id}' => 'SuperCategoryController@update',      // Update category
-        'SuperAdmin/category/delete/{id}' => 'SuperCategoryController@delete',      // Delete category
-
-        // New Product Routes
-        'SuperAdmin/products' => 'SuperProductController@index',                    // List products
-        'SuperAdmin/product/create' => 'SuperProductController@create',             // Create product form
-        'SuperAdmin/product/store' => 'SuperProductController@store',               // Store new product
-        'SuperAdmin/product/edit/{id}' => 'SuperProductController@edit',            // Edit product form
-        'SuperAdmin/product/update/{id}' => 'SuperProductController@update',        // Update product
-        'SuperAdmin/product/delete/{id}' => 'SuperProductController@delete',        // Delete product
-
-        // Order Management Route
-        'SuperAdmin/orders' => 'SuperOrderController@index',              // List all orders
-        'SuperAdmin/orders/show/{id}' => 'SuperOrderController@show',     // Show a specific order
-        'SuperAdmin/orders/create' => 'SuperOrderController@create',      // Create a new order
-        'SuperAdmin/orders/store' => 'SuperOrderController@store',        // Store new order data
-        'SuperAdmin/orders/edit/{id}' => 'SuperOrderController@edit',     // Edit a specific order
-        'SuperAdmin/orders/update/{id}' => 'SuperOrderController@update', // Update a specific order
-        'SuperAdmin/orders/delete/{id}' => 'SuperOrderController@delete', // Delete a specific order
-
+            'SuperAdmin/dashboard' => 'SuperDashboardController@index',
+            'SuperAdmin/users' => 'SuperUserController@index',
+            'SuperAdmin/comments' => 'SuperReviewController@index',
+            'SuperAdmin/users/create' => 'SuperUserController@create',
+            'SuperAdmin/users/status' => 'SuperUserController@toggleStatus',
+            'SuperAdmin/coupons' => 'SuperCouponController@index',
+            'SuperAdmin/coupons/create' => 'SuperCouponController@create',
+            'SuperAdmin/coupons/edit/{id}' => 'SuperCouponController@edit',
+            'SuperAdmin/coupons/delete/{id}' => 'SuperCouponController@delete',
+            'SuperAdmin/users/toggleStatus/{id}/{status}' => 'SuperUserController@toggleStatus',
+            'SuperAdmin/reviews/toggleStatus/{id}/{status}' => 'SuperReviewController@toggleStatus',
+            'SuperAdmin/coupons/toggleStatus/{id}/{status}' => 'SuperCouponController@toggleStatus',
+    
 
         'admin/manage_orders/{user_id}' => 'OrderController@manageOrders',
 
@@ -116,25 +76,56 @@ class Core
         'customers/contact-us' => 'CustomerController@contact',
         'customers/checkout' => 'CustomerController@checkout',
         'customers/faq' => 'CustomerController@faq',
+
         'customers/index' => 'CustomerController@index',
-        'customers/login' => 'CustomerController@login',
+        
         'customers/my-account' => 'CustomerController@account',
         'customers/privacy-policy' => 'CustomerController@privacy',
-        'customers/product-details-default' => 'CustomerController@product',
+        'customers/login' => 'AuthController@login',
+        'customers/register' => 'AuthController@register',
+
+        'customers/logout' => 'AuthController@logout',
+        'customers/profile' => 'ProfileController@viewProfile',
+        'profile/update', 'ProfileController@update',
+
+        // 'customers/product-details-default' => 'CustomerController@product',
         'customers/wishlist' => 'CustomerController@wishlist',
+
+      
+        'customers/dashboard' => 'AdminController@dashboard',
+       
+
+
+        //product Routes
+        'product/details' => 'ProductController@details',
+        'products' => 'ProductController@index',
+        'home' => 'ProductController@home',
+
+        //admin routes
         'admin/product/create' => 'ProductController@create',
 
-    ];
+        //wishlist routes
+        'wishlist' => 'WishlistController@index',
+        'wishlist/add/{product_id}' => 'WishlistController@add',
+        'wishlist/remove/{wishlist_id}' => 'WishlistController@remove',
 
-    public function __construct()
-    {
+        // Routes for managing products
+        'dashboard/manageProducts' => 'DashboardController@manageProducts',
+        'dashboard/createProduct' => 'DashboardController@createProduct',
+        'dashboard/addProduct' => 'DashboardController@addProduct',
+        'dashboard/editProduct/{id}' => 'DashboardController@editProduct',
+        'dashboard/updateProduct/{id}' => 'DashboardController@updateProduct',
+        'dashboard/deleteProduct/{id}' => 'DashboardController@deleteProduct',
+
+
+    ];
+    
+
+    public function __construct() {
         $this->dispatch();
     }
 
-
-
-private function dispatch()
-{
+private function dispatch() {
     $url = $this->getUrl();
 
     // Check for dynamic routes
@@ -152,7 +143,6 @@ private function dispatch()
             $methodName = $route[1];
 
             // Check if the controller file exists
-
             if (file_exists('controllers/' . $controllerName . '.php')) {
                 require_once 'controllers/' . $controllerName . '.php';
                 $controller = new $controllerName;
@@ -194,6 +184,7 @@ private function dispatch()
         die("ERROR: Route not found for URL '$url'.");
     }
 }
+
     private function getUrl() {
         $url = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
         $url = trim($url, '/');  // Trim leading and trailing slashes
@@ -204,5 +195,5 @@ private function dispatch()
 
         return $url;
     }
-
+    
 }

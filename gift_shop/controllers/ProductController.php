@@ -1,5 +1,7 @@
 <?php
+// File: controllers/ProductController.php
 
+require_once 'BaseController.php';
 
 class ProductController extends Controller
 {
@@ -7,31 +9,52 @@ class ProductController extends Controller
 
     public function __construct()
     {
-        $this->productModel = $this->model('ProductModel');
-
+        // Load the Product model using the base Controller's model method
+        $this->productModel = $this->model('Product');
     }
 
-    public function index($categoryId)
+    public function index()
     {
-        $products = $this->productModel->getProductsByCategory($categoryId);
-        $this->view('admin/products/index', ['products' => $products, 'categoryId' => $categoryId]);
+        // Retrieve all products from the model
+        $products = $this->productModel->all();
+        
+        // Load the index view and pass products as data
+        $this->view('products/index', ['products' => $products]);
+    }
+    public function home()
+    {
+        // Retrieve all products from the model
+        $products = $this->productModel->all();
+        
+        // Load the index view and pass products as data
+        $this->view('customers/index', ['products' => $products]);
     }
 
-    public function addProduct($categoryId)
+    public function details()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $data = [
-                'product_name' => $_POST['product_name'],
-                'description' => $_POST['description'],
-                'price' => $_POST['price'],
-                'stock_quantity' => $_POST['stock_quantity'],
-                'category_id' => $categoryId,
-                'image_url' => $_POST['image_url']
-            ];
-            $this->productModel->create($data);
-            header("Location: /admin/products/index/$categoryId");
+        // Get the product ID from the URL
+        $productId = $_GET['id'] ?? null;
+
+        if ($productId) {
+            // Fetch the product using the find method in the Product model
+            $product = $this->productModel->find($productId);
+
+            if ($product) {
+                // Define the image directory path
+                $dir = "/path/to/your/image/directory/";
+
+                // Load the product details view, passing product and directory as data
+                $this->view('products/details', ['product' => $product, 'dir' => $dir]);
+            } else {
+                // Redirect or display an error if the product is not found
+                header("Location: /products");
+                exit();
+            }
         } else {
-            $this->view('admin/products/addProduct', ['categoryId' => $categoryId]);
+            // Redirect to the products list if no ID is provided
+            header("Location: /products");
+            exit();
         }
     }
 }
+?>

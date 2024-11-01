@@ -49,11 +49,11 @@ class BaseModel
         $statement->execute($data);
     }
 
-    public function update($id, $data)
-    {
-        $fields = '';
+    public function update($id, $data) {
+        // Build the SET part of the query dynamically based on the keys in $data
+        $fields = [];
         foreach ($data as $key => $value) {
-            $fields .= $key . '=:' . $key . ',';
+            $fields[] = "$key = :$key";
         }
 
         $fields = rtrim($fields, ',');
@@ -63,6 +63,7 @@ class BaseModel
 
         $statement->execute($data);
     }
+    
 
     public function delete($id)
     {

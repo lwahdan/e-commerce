@@ -1,4 +1,4 @@
-<?php require 'views/partials/header.php'; ?>
+<?php require_once 'views/partials/header.php';?>
 
     <!-- ...:::: Start Breadcrumb Section:::... -->
     <div class="breadcrumb-section breadcrumb-bg-color--golden">
@@ -10,8 +10,8 @@
                         <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
                             <nav aria-label="breadcrumb">
                                 <ul>
-                                    <li><a href="index.php">Home</a></li>
-                                    <li><a href="shop-grid-sidebar-left.html">Shop</a></li>
+                                    <li><a href="/customers/index">Home</a></li>
+                                    <li><a href="#">Shop</a></li>
                                     <li class="active" aria-current="page">Product Details Default</li>
                                 </ul>
                             </nav>
@@ -83,6 +83,7 @@
                             </div>
                             <!-- Add Arrows -->
                             <div class="gallery-thumb-arrow swiper-button-next"></div>
+
                             <div class="gallery-thumb-arrow swiper-button-prev"></div>
                         </div>
                         <!-- End Thumbnail Image -->
@@ -91,9 +92,11 @@
                 <div class="col-xl-7 col-lg-6">
                     <div class="product-details-content-area product-details--golden" data-aos="fade-up"
                         data-aos-delay="200">
+
                         <!-- Start  Product Details Text Area-->
+
                         <div class="product-details-text">
-                            <h4 class="title">Ornare sed consequat</h4>
+                            <h4 class="title"><?php echo htmlspecialchars($product['product_name']); ?></h4>
                             <div class="d-flex align-items-center">
                                 <ul class="review-star">
                                     <li class="fill"><i class="ion-android-star"></i></li>
@@ -104,19 +107,17 @@
                                 </ul>
                                 <a href="#" class="customer-review ml-2">(customer review )</a>
                             </div>
-                            <div class="price">$80.00</div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est
-                                tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis
-                                justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id
-                                nulla.</p>
-                        </div> <!-- End  Product Details Text Area-->
+                            <div class="price">$<?php echo number_format($product['price'], 2); ?></div>
+                            <p><?php echo htmlspecialchars($product['description']); ?></p>
+                        </div>
+                        <!-- End  Product Details Text Area-->
                         <!-- Start Product Variable Area -->
                         <div class="product-details-variable">
                             <h4 class="title">Available Options</h4>
                             <!-- Product Variable Single Item -->
                             <div class="variable-single-item">
                                 <div class="product-stock"> <span class="product-stock-in"><i
-                                            class="ion-checkmark-circled"></i></span> 200 IN STOCK</div>
+                                            class="ion-checkmark-circled"></i></span> <?php echo ($product['stock_quantity']);?> IN STOCK</div>
                             </div>
                             <!-- Product Variable Single Item -->
                             <div class="d-flex align-items-center ">
@@ -148,7 +149,8 @@
                                 <li><a href="#">KITCHEN UTENSILS</a></li>
                                 <li><a href="#">TENNIS</a></li>
                             </ul>
-                        </div> <!-- End  Product Details Catagories Area-->
+                        </div> 
+                        <!-- End  Product Details Catagories Area-->
                         <!-- Start  Product Details Social Area-->
                         <div class="product-details-social">
                             <span class="title">SHARE THIS PRODUCT:</span>
