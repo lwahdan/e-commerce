@@ -1,14 +1,13 @@
 <?php
 //update to our pages names
-class Core {
+class Core
+{
     protected $routes = [
         // Default route to customer index
         '' => 'CustomerController@index',  // This handles the root URL
 
 
-
         // Admin Routes
-
 
 
         // Admin Routes
@@ -108,9 +107,6 @@ class Core {
         'SuperAdmin/orders/delete/{id}' => 'SuperOrderController@delete', // Delete a specific order
 
 
-
-
-
         'admin/manage_orders/{user_id}' => 'OrderController@manageOrders',
 
         // customers Routes
@@ -130,25 +126,27 @@ class Core {
 
     ];
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->dispatch();
     }
 
-   
 
-private function dispatch() {
+
+private function dispatch()
+{
     $url = $this->getUrl();
 
     // Check for dynamic routes
     foreach ($this->routes as $route => $action) {
         // Create a regex pattern from the route, replacing {param} with a regex capture group
         $routePattern = preg_replace('/\{(\w+)\}/', '([^\/]+)', $route);
-        
+
         // Check if the current URL matches the route pattern
         if (preg_match('#^' . $routePattern . '$#', $url, $matches)) {
             // Remove the first element which is the full match
             array_shift($matches);
-            
+
             $route = explode('@', $action);
             $controllerName = $route[0];
             $methodName = $route[1];
@@ -195,8 +193,8 @@ private function dispatch() {
     } else {
         die("ERROR: Route not found for URL '$url'.");
     }
-
-     function getUrl() {
+}
+    private function getUrl() {
         $url = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
         $url = trim($url, '/');  // Trim leading and trailing slashes
 
@@ -207,5 +205,4 @@ private function dispatch() {
         return $url;
     }
 
-}
 }
